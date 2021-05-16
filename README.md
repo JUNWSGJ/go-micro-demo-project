@@ -1,2 +1,2 @@
-# kratos-demo
-a demo project base on go-kratos
+# go-micro-demo-project
+A sample project of micro service, based on go-kratos
