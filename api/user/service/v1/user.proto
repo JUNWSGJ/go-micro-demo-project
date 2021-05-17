@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package user.service.v1;
+
+option go_package = "api/user/service/v1;v1";
+option java_multiple_files = true;
+option java_package = "app.user.api.user.v1";
+
+service User {
+    rpc GetUser (GetUserRequest) returns (GetUserReply) {}
+    rpc RegisterOrLogin(RegisterOrLoginRequest) returns (GetUserReply) {}
+    rpc Authenticate(AuthenticateRequest) returns(AuthenticateReply) {}
+}
+
+
+message GetUserRequest{
+  int64  id = 1;
+  string mobile = 2;
+}
+
+message GetUserReply{
+  int64  id = 1;
+  string mobile = 2;
+  string nickname = 3;
+  string wx_openid = 4;
+  uint64 lastLoginTime = 14;
+  uint64 createdTime = 15;
+}
+
+message RegisterOrLoginRequest {
+  string mobile = 1;
+}
+
+message AuthenticateRequest {
+  string mobile = 1;
+  string auth_type = 2;
+  string auth_code = 3;
+}
+
+message AuthenticateReply {
+  bool success = 1;
+}
